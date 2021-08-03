@@ -16,10 +16,8 @@
     <link rel="stylesheet" href="{{url('dashboard')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{url('dashboard')}}/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{url('dashboard')}}/dist/css/download.css">
     <!-- DataTables -->
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{url('dashboard')}}/plugins/summernote/summernote-bs4.css">
-    <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

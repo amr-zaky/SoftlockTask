@@ -1,8 +1,10 @@
 @include('layouts.header')
-
+<section class="section-subscribe">
 <div class="container">
+    
 <div id="accordion" class="text-center">
-    <div class="card ">
+@include('layouts.messages')
+    <div class="card frontCard">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0 text-center">
                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -39,14 +41,14 @@
                         
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary pl-3 pr-3">Submit</button>
                 </form>
 
 
             </div>
         </div>
     </div>
-    <div class="card">
+    <div class="card frontCard">
         <div class="card-header" id="headingTwo">
             <h5 class="mb-0 text-center">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -83,7 +85,7 @@
                         
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary pl-3 pr-3">Submit</button>
                 </form>
 
 
@@ -112,7 +114,7 @@
     </tbody>
 </table>
 </div>
-
+</section>
 
 
 @push('custom-scripts')

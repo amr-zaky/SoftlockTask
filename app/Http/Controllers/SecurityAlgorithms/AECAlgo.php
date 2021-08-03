@@ -14,8 +14,7 @@ class AECAlgo implements   MainSecurity
     private   $FILE_ENCRYPTION_BLOCKS=10000;
 
     public function Encryption($source, $key, $dest,$AlogrithmMode='AES-256-CBC')
-    {
-        
+    {   
         $iv = openssl_random_pseudo_bytes(16);
         $error = false;
         if ($fpOut = fopen($dest, 'w')) {

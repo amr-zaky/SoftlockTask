@@ -27,7 +27,7 @@ class ValidateFilesRequest extends FormRequest
         return [
             "sourceFile"=>"required|max:10000" ,
             "key"=>"required|min:32,max:32",      
-            "algorithm"   =>"required|in:AES-256-CBC" ,     
+            "algorithm"=>"required|in:AES-256-CBC" ,     
         ];
     }
 

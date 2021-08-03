@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\SecurityAlgorithms\AECAlgo;
+use App\Http\Controllers\SecurityAlgorithms\MainSecurity;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,13 +17,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 
-        $default=config('securityAlgos.default');
-       // $securityAlog = config("securityAlgos.{$default}.class");
+        $this->app->bind(MainSecurity::class, AECAlgo::class);
 
-        $this->app->bind(
-            App\Http\Controllers\SecurityAlgorithms\MainSecurity::class, // the  interface
-            App\Http\Controllers\SecurityAlgorithms\AECAlgo::class
-        );
     }
 
     /**
