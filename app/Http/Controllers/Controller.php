@@ -31,12 +31,14 @@ class Controller extends BaseController
 
     public function encryptFile(ValidateFilesRequest  $request)
     {
+    
         $des="encrypted.";
-
         $fileInfo=$request->file("sourceFile");
         $fileExtection =$request->file("sourceFile")->getClientOriginalExtension();
         $des=$des.$fileExtection;
-        $des=$this->mainSecurity->Encryption($fileInfo,config('key'),$des);
+        $key=$request->input("key");
+        $alogrithmMode=$request->input("algorithm");
+        $des=$this->mainSecurity->Encryption($fileInfo,$key,$des,$alogrithmMode);
 
         return view("download")->with("file",$des);
     }
@@ -49,7 +51,9 @@ class Controller extends BaseController
         $fileInfo=$request->file("sourceFile");
         $fileExtection =$request->file("sourceFile")->getClientOriginalExtension();
         $des=$des.$fileExtection;
-        $des=$this->mainSecurity->Decryption($fileInfo,config('key'),$des);
+        $key=$request->input("key");
+        $alogrithmMode=$request->input("algorithm");
+        $des=$this->mainSecurity->Decryption($fileInfo,$key,$des,$alogrithmMode);
         return view("download")->with("file",$des);
     }
 

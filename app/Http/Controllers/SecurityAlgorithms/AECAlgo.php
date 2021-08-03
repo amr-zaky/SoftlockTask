@@ -13,9 +13,9 @@ class AECAlgo implements   MainSecurity
 {
     private   $FILE_ENCRYPTION_BLOCKS=10000;
 
-    public function Encryption($source, $key, $dest)
+    public function Encryption($source, $key, $dest,$AlogrithmMode='AES-256-CBC')
     {
-        $key = substr(sha1($key, true), 0, 32);
+        
         $iv = openssl_random_pseudo_bytes(16);
         $error = false;
         if ($fpOut = fopen($dest, 'w')) {
@@ -24,7 +24,7 @@ class AECAlgo implements   MainSecurity
             if ($fpIn = fopen($source, 'rb')) {
                 while (!feof($fpIn)) {
                     $plaintext = fread($fpIn, 16 * $this->FILE_ENCRYPTION_BLOCKS);
-                    $ciphertext = openssl_encrypt($plaintext, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
+                    $ciphertext = openssl_encrypt($plaintext, $AlogrithmMode, $key, OPENSSL_RAW_DATA, $iv);
                     // Use the first 16 bytes of the ciphertext as the next initialization vector
                     $iv = substr($ciphertext, 0, 16);
                     fwrite($fpOut, $ciphertext);
@@ -41,10 +41,9 @@ class AECAlgo implements   MainSecurity
         return $error ? false : $dest;
     }
 
-    public function Decryption($source, $key, $dest)
+    public function Decryption($source, $key, $dest,$AlogrithmMode='AES-256-CBC')
     {
-        $key = substr(sha1($key, true),0, 32);
-
+       
         $error = false;
         if ($fpOut = fopen($dest, 'w')) {
             if ($fpIn = fopen($source, 'rb')) {
@@ -53,7 +52,7 @@ class AECAlgo implements   MainSecurity
                 while (!feof($fpIn)) {
                     // we have to read one block more for decrypting than for encrypting
                     $ciphertext = fread($fpIn, 16 * ($this->FILE_ENCRYPTION_BLOCKS + 1));
-                    $plaintext = openssl_decrypt($ciphertext, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
+                    $plaintext = openssl_decrypt($ciphertext, $AlogrithmMode, $key, OPENSSL_RAW_DATA, $iv);
                     // Use the first 16 bytes of the ciphertext as the next initialization vector
                     $iv = substr($ciphertext, 0, 16);
                     fwrite($fpOut, $plaintext);

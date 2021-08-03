@@ -24,6 +24,21 @@
                         <br><br><br>
                     </div>
 
+                    <div class="form-group">
+                        <label for="algorithm">Chose Algorithm Modes To Encrypt</label>
+                        <select name="algorithm">
+                            <option  value="AES-256-CBC">AES-256-CBC</option>
+                        </select>
+                    
+                    </div>
+
+                    <div class="form-group">
+                        <label for="key"> Secret Key</label>
+                    
+                        <input type="text" class="form-input" name="key"  required="required">
+                        
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
@@ -52,6 +67,20 @@
                         <label for="sourceFile">Chose File to Decrypt</label>
                     <br><br><br>
                         <input class="sourceFile" type="file" name="sourceFile"  required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="algorithm">Chose Algorithm Modes To Encrypt</label>
+                        <select name="algorithm">
+                            <option  value="AES-256-CBC">AES-256-CBC</option>
+                        </select>
+                    
+                    </div>
+                    <div class="form-group">
+                        <label for="key"> Secret Key</label>
+                    
+                        <input type="text" class="form-input" name="key"  required="required">
+                        
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
