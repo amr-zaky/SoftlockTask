@@ -123,7 +123,6 @@
                 var fileName=this.files[0].name;
                 var size=this.files[0].size;
                 var extension=fileName.substr(fileName.lastIndexOf('.') + 1);
-                
                 $("#namefile").text(fileName);
                 $("#size").text(size);
                 $("#extension").text(extension);

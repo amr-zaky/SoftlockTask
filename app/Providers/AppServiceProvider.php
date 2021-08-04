@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\SecurityAlgorithms\AECAlgo;
+use App\Http\Controllers\SecurityAlgorithms\AESAlgo;
 use App\Http\Controllers\SecurityAlgorithms\MainSecurity;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,10 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-
-        $this->app->bind(MainSecurity::class, AECAlgo::class);
-
+        // to bind the interface to the Alogrithm
+        $this->app->bind(MainSecurity::class, AESAlgo::class);
     }
 
     /**
