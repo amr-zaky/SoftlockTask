@@ -14,7 +14,11 @@ use RuntimeException;
 class AESAlgo implements   MainSecurity
 
 {
-    private   $FILE_ENCRYPTION_BLOCKS=10000;
+     /**
+     * Define the number of blocks that should be read from the source file for each chunk.
+     * We chose 255 because on decryption we want to read chunks of 4kb ((255 + 1)*16).
+     */
+    private   $FILE_ENCRYPTION_BLOCKS=255;
 
     public function Encryption($sourceFile, $key, $destinationFile, $AlogrithmMode='AES-256-CBC')
     {   

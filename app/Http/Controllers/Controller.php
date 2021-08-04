@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\SecurityAlgorithms\MainSecurity;
 use App\Http\Requests\ValidateFilesRequest;
 
-
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
 {
@@ -32,10 +30,10 @@ class Controller extends BaseController
         $destinationFile="encrypted.";
         $SourcefileExtection =$validated['sourceFile']->getClientOriginalExtension();
         $destinationFile=$destinationFile.$SourcefileExtection;
-
+            
         //call encryption function 
         $destinationFile=$this->mainSecurity->Encryption($validated['sourceFile'],$validated['key'],$destinationFile,$validated['algorithm']);
-      
+          
         // check the Encryption 
         if ($destinationFile === false)
             return redirect()->back()->withErrors(['Encytpion Error']);
@@ -49,7 +47,7 @@ class Controller extends BaseController
         //collect Request Data 
         $validated=$request->validated();
 
-        //create destination File and set the extension
+         //create destination File and set the extension
         $destinationFile="decrypted.";
         $SourcefileExtection =$validated['sourceFile']->getClientOriginalExtension();
         $destinationFile=$destinationFile.$SourcefileExtection;
